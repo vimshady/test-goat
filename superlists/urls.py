@@ -7,3 +7,4 @@ urlpatterns = [
     url(r'^lists/', include(list_urls)),
     # url(r'^admin/', include(admin.site.urls)),
 ]
+

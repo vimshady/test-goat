@@ -8,3 +8,4 @@ urlpatterns = [
     url(r'^(\d+)/add_item$', views.add_item, name='add_item'),
 ]
 
+
