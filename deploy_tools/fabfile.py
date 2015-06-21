@@ -5,7 +5,6 @@ import random
 env.key_filename = '~/.ssh/intramural-key.pem'
 env.hosts=["ubuntu@xec2-52-7-213-205.compute-1.amazonaws.com"]
 
-
 REPO_URL = 'https://github.com/vimshady/test-goat.git'
 
 def deploy():
