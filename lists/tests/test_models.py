@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.test import TestCase
 from lists.models import Item, List
 
+
 class ItemModelTest(TestCase):
 
     def test_default_text(self):
@@ -25,17 +26,6 @@ class ItemModelTest(TestCase):
             item.full_clean()
 
 
-    def test_string_representation(self):
-        item = Item(text='some text')
-        self.assertEqual(str(item), 'some text')
-
-
-class ListModelTest(TestCase):
-
-    def test_get_absolute_url(self):
-        list_ = List.objects.create()
-        self.assertEqual(list_.get_absolute_url(), '/lists/%d/' % (list_.id,))
-
 
     def test_duplicate_items_are_invalid(self):
         list_ = List.objects.create()
@@ -45,12 +35,12 @@ class ListModelTest(TestCase):
             item.full_clean()
 
 
-    def test_CAN_save_item_to_different_lists(self):
+    def test_CAN_save_same_item_to_different_lists(self):
         list1 = List.objects.create()
         list2 = List.objects.create()
         Item.objects.create(list=list1, text='bla')
         item = Item(list=list2, text='bla')
-        item.full_clean() # should not raise
+        item.full_clean()  # should not raise
 
 
     def test_list_ordering(self):
@@ -63,4 +53,16 @@ class ListModelTest(TestCase):
             [item1, item2, item3]
         )
 
+
+    def test_string_representation(self):
+        item = Item(text='some text')
+        self.assertEqual(str(item), 'some text')
+
+
+
+class ListModelTest(TestCase):
+
+    def test_get_absolute_url(self):
+        list_ = List.objects.create()
+        self.assertEqual(list_.get_absolute_url(), '/lists/%d/' % (list_.id,))
 
