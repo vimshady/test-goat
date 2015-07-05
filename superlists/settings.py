@@ -25,8 +25,18 @@ SECRET_KEY = '2n-p3i()5#%m7x@_)sup94so9s9=ag9k@33$tu@erg(^0u#agu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+DOMAIN = "localhost"
 
+ALLOWED_HOSTS = [DOMAIN]
+
+SESSION_COOKIE_SECURE = False
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake'
+    }
+}
 
 # Application definition
 
