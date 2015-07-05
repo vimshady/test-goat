@@ -9,6 +9,7 @@ var initialize = function (navigator, user, token, urls) {
         loggedInUser: user,
         onlogin: function (assertion) {
             console.log(urls);
+            console.log(token);
             $.post(
                 urls.login,
                 { assertion: assertion, csrfmiddlewaretoken: token }
